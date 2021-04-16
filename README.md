@@ -3,6 +3,7 @@
 Go template for Heroku apps
 
 ```
+# go.mod & go.sum can be removed at this point
 go mod init server
 
 # packages
