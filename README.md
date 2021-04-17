@@ -2,6 +2,8 @@
 
 Go template for Heroku apps
 
+[Medium Blog](https://medium.com/p/deploy-gin-gonic-rest-api-free-in-heroku-code-ae167b7d0d53)
+
 ```
 # go.mod & go.sum can be removed at this point
 go mod init server
