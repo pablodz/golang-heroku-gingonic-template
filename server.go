@@ -12,7 +12,7 @@ func main() {
 	r.GET("/", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"/ping": "endpoint that response with a json (pong).",
-			"/pingTime": "endpoint that response with the server time."
+			"/pingTime": "endpoint that response with the server time.",
 		})
 	})
 
