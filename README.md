@@ -17,3 +17,16 @@ go run server.go
 # Listening at my-server.herokuapp.com/ping
 # Would receive a json
 ```
+
+
+## Stress the server
+
+To test and check time requests you can use Apache Bench
+
+```
+sudo apt-get install apache2-utils
+
+ab -t 10 -n 10000 -c 100 http://localhost:8080/ping
+# or
+ab -t 10 -n 10000 -c 100 http://localhost:8080/pingTime
+```
