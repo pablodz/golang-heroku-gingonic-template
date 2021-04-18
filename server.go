@@ -8,6 +8,13 @@ import (
 
 func main() {
 	r := gin.Default()
+	
+	r.GET("/", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"/ping": "endpoint that response with a json (pong).",
+			"/pingTime": "endpoint that response with the server time."
+		})
+	})
 
 	r.GET("/ping", func(c *gin.Context) {
 		c.JSON(200, gin.H{
