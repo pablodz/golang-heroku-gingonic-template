@@ -1,6 +1,7 @@
 package main
 
 import (
+	"runtime"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -8,11 +9,12 @@ import (
 
 func main() {
 	r := gin.Default()
-	
+
 	r.GET("/", func(c *gin.Context) {
 		c.JSON(200, gin.H{
-			"/ping": "endpoint that response with a json (pong).",
-			"/pingTime": "endpoint that response with the server time.",
+			"/ping":                  "endpoint that response with a json (pong).",
+			"/pingTime":              "endpoint that response with the server time.",
+			"/getServerHardwardData": "Get number of cores, golang version, etc.",
 		})
 	})
 
@@ -25,6 +27,16 @@ func main() {
 	r.GET("/pingTime", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"serverTime": time.Now().UTC(),
+		})
+	})
+
+	r.GET("/getServerHardwardData", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"You are using ":        runtime.Compiler,
+			"on a":                  runtime.GOARCH,
+			"Using Go version":      runtime.Version(),
+			"Number of CPUs:":       runtime.NumCPU(),
+			"Number of Goroutines:": runtime.NumGoroutine(),
 		})
 	})
 
