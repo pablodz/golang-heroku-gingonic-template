@@ -1,6 +1,7 @@
 package main
 
 import (
+	"os"
 	"runtime"
 	"time"
 
@@ -40,5 +41,11 @@ func main() {
 		})
 	})
 
-	r.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
+	if os.Getenv("PORT") != "" {
+		// Heroku add a env variable called PORT, if exist we will use it
+		r.Run("0.0.0.0:" + os.Getenv("PORT"))
+	} else {
+		// If is running on localhost (our computer), no PORT env variable
+		r.Run("0.0.0.0:8080")
+	}
 }
